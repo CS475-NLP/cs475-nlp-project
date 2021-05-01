@@ -45,6 +45,9 @@ class CVDD(object):
         self.net = build_network(net_name, dataset, embedding_size=embedding_size, pretrained_model=pretrained_model,
                                  update_embedding=False, attention_size=attention_size,
                                  n_attention_heads=n_attention_heads)
+        # print('self.net')
+        # print(self.net)
+        # print('self.net')
 
     def train(self, dataset: BaseADDataset, optimizer_name: str = 'adam', lr: float = 0.001, n_epochs: int = 25,
               lr_milestones: tuple = (), batch_size: int = 64, lambda_p: float = 1.0,

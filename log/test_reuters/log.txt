@@ -1,0 +1,36 @@
+2021-05-01 16:03:03,162 - root - INFO - Log file is ../log/test_reuters/log.txt.
+2021-05-01 16:03:03,163 - root - INFO - Data path is ../data.
+2021-05-01 16:03:03,164 - root - INFO - Export path is ../log/test_reuters.
+2021-05-01 16:03:03,164 - root - INFO - Dataset: reuters
+2021-05-01 16:03:03,165 - root - INFO - Normal class: 6
+2021-05-01 16:03:03,165 - root - INFO - Network: cvdd_Net
+2021-05-01 16:03:03,166 - root - INFO - Tokenizer: spacy
+2021-05-01 16:03:03,166 - root - INFO - Clean text in pre-processing: True
+2021-05-01 16:03:03,167 - root - INFO - Word vector embedding size: 300
+2021-05-01 16:03:03,167 - root - INFO - Load pre-trained model: GloVe_6B
+2021-05-01 16:03:03,168 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-01 16:03:03,169 - root - INFO - Number of attention heads: 3
+2021-05-01 16:03:03,169 - root - INFO - Attention size: 150
+2021-05-01 16:03:03,170 - root - INFO - Orthogonality regularization hyperparameter: 1.000
+2021-05-01 16:03:03,170 - root - INFO - Temperature alpha annealing strategy: logarithmic
+2021-05-01 16:03:03,176 - root - INFO - Set seed to 1.
+2021-05-01 16:03:03,177 - root - INFO - Computation device: cpu
+2021-05-01 16:03:03,177 - root - INFO - Number of dataloader workers: 0
+2021-05-01 16:08:45,129 - root - INFO - Log file is ../log/test_reuters/log.txt.
+2021-05-01 16:08:45,129 - root - INFO - Data path is ../data.
+2021-05-01 16:08:45,130 - root - INFO - Export path is ../log/test_reuters.
+2021-05-01 16:08:45,131 - root - INFO - Dataset: reuters
+2021-05-01 16:08:45,131 - root - INFO - Normal class: 6
+2021-05-01 16:08:45,132 - root - INFO - Network: cvdd_Net
+2021-05-01 16:08:45,133 - root - INFO - Tokenizer: spacy
+2021-05-01 16:08:45,133 - root - INFO - Clean text in pre-processing: True
+2021-05-01 16:08:45,134 - root - INFO - Word vector embedding size: 300
+2021-05-01 16:08:45,134 - root - INFO - Load pre-trained model: GloVe_6B
+2021-05-01 16:08:45,136 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-01 16:08:45,137 - root - INFO - Number of attention heads: 3
+2021-05-01 16:08:45,139 - root - INFO - Attention size: 150
+2021-05-01 16:08:45,139 - root - INFO - Orthogonality regularization hyperparameter: 1.000
+2021-05-01 16:08:45,140 - root - INFO - Temperature alpha annealing strategy: logarithmic
+2021-05-01 16:08:45,147 - root - INFO - Set seed to 1.
+2021-05-01 16:08:45,147 - root - INFO - Computation device: cpu
+2021-05-01 16:08:45,148 - root - INFO - Number of dataloader workers: 0

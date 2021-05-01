@@ -9,11 +9,15 @@ def build_network(net_name, dataset, embedding_size=None, pretrained_model=None,
                   word_vectors_cache='../data/word_vectors_cache', attention_size=100, n_attention_heads=1):
     """Builds the neural network."""
 
-    implemented_networks = ('embedding', 'cvdd_Net')
+    implemented_networks = ('embedding', 'cvdd_Net','autoencoder')
     assert net_name in implemented_networks
 
     net = None
     vocab_size = dataset.encoder.vocab_size
+
+    print('vocab_size')
+    print(vocab_size)
+    print('vocab_size')
 
     # Set embedding
 
@@ -42,5 +46,7 @@ def build_network(net_name, dataset, embedding_size=None, pretrained_model=None,
         net = embedding
     if net_name == 'cvdd_Net':
         net = CVDDNet(embedding, attention_size=attention_size, n_attention_heads=n_attention_heads)
+    if net_name == 'autoencoder':
+        net = embedding
 
     return net
