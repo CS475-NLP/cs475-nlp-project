@@ -1,14 +1,23 @@
-import random
-import matplotlib.pyplot as plt
-import pickle as pkl
-import keras
-import tensorflow as tf
-import numpy as np
-import pandas as pd
-import time
-from keras.models import Sequential, Model, load_model
-from keras.layers import LSTM, Dense, RepeatVector, TimeDistributed, Input, BatchNormalization, multiply, concatenate, Flatten, Activation, dot
-from keras.optimizers import Adam
-from keras.utils.vis_utils import plot_model, model_to_dot
-from scipy.stats import multivariate_normal
-from sklearn.mixture import GaussianMixture
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from base.base_net import BaseNet
+
+class autoencoder(BaseNet):
+
+    def __init__(self, pretrained_model):
+        super().__init__()
+
+        # Load pretrained model (which provides a hidden representation per word, e.g. word vector or language model)
+        self.pretrained_model = pretrained_model
+        self.hidden_size = pretrained_model.embedding_size
+
+    def forward(self, x):
+        # x.shape = (sentence_length, batch_size)
+
+        hidden = self.pretrained_model(x)
+        print(hidden.shape)
+        # hidden.shape = (sentence_length, batch_size, hidden_size)
+
+        return hidden
