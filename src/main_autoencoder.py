@@ -59,7 +59,8 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     for data in train_loader:
         idx, text_batch, label_batch, _ = data
         text_batch, label_batch = text_batch.to('cpu'), label_batch.to('cpu')
-        print(AE(text_batch))
+        c1, c2, c3, c4, h1, h2, h3, h4 = AE.Encode(text_batch)
+        o8 = AE.Decode_Train(text_batch, c1, c2, c3, c4, h1, h2, h3, h4)
 
 
 if __name__ == '__main__':
