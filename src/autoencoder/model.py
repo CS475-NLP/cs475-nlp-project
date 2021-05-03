@@ -49,5 +49,14 @@ class autoencoder(BaseNet):
 
         return o8
 
+    def Loss(self, x, o8):
+        hidden = self.pretrained_model(x)
+        loss = nn.MSELoss()
+        MSE_Loss = loss(o8, hidden)
+
+        return MSE_Loss
+
+
+
     def Decode_Test(self, y):
         print('b')
