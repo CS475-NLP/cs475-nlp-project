@@ -56,6 +56,7 @@ class CVDDTrainer(BaseTrainer):
 
         # Get train data loader
         train_loader, _ = dataset.loaders(batch_size=self.batch_size, num_workers=self.n_jobs_dataloader)
+        print(len(train_loader))
 
         # Initialize context vectors
         net.c.data = torch.from_numpy(
@@ -166,6 +167,7 @@ class CVDDTrainer(BaseTrainer):
 
         # Get test data loader
         _, test_loader = dataset.loaders(batch_size=self.batch_size, num_workers=self.n_jobs_dataloader)
+        print(len(test_loader))
 
         # Testing
         logger.info('Starting testing...')

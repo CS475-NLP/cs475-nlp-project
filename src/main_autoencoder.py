@@ -12,7 +12,7 @@ from datasets.main import load_dataset
 
 from networks.main import build_network
 from autoencoder.model import autoencoder
-
+import torch.optim as optim
 
 ################################################################################
 # Settings
@@ -49,20 +49,43 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     print('Dataset')
 
     ##Word Embedding##
-    embedding= build_network(net_name, dataset, embedding_size=embedding_size, pretrained_model=pretrained_model, update_embedding=False, attention_size=attention_size, n_attention_heads=n_attention_heads)
+    embedding = build_network(net_name, dataset, embedding_size=embedding_size, pretrained_model=pretrained_model, update_embedding=False, attention_size=attention_size, n_attention_heads=n_attention_heads)
     print(embedding)
 
     AE=autoencoder(embedding)
+    train_loader, test_loader = dataset.loaders(batch_size=32, num_workers=0)
+    # print(len(train_loader))
+    # print(len(test_loader))
 
-    train_loader, _ = dataset.loaders(batch_size=64, num_workers=0)
+    optimizer = optim.Adam(AE.parameters(), lr=0.02)
+    for i in range(100):
+        AE.train()
+        for data in train_loader:
+            optimizer.zero_grad()
+            idx, text_batch, label_batch, _ = data
+            text_batch, label_batch = text_batch.to('cpu'), label_batch.to('cpu')
+            c1, c2, c3, c4, h1, h2, h3, h4 = AE.Encode(text_batch)
+            o8 = AE.Decode_train(text_batch, c1, c2, c3, c4, h1, h2, h3, h4)
+            loss=AE.Loss(text_batch, o8)
+            print(loss)
+            loss.backward()
+            optimizer.step()
 
-    for data in train_loader:
+    train_loader, test_loader = dataset.loaders(batch_size=1, num_workers=0)
+
+    for data in test_loader:
         idx, text_batch, label_batch, _ = data
-        text_batch, label_batch = text_batch.to('cpu'), label_batch.to('cpu')
         c1, c2, c3, c4, h1, h2, h3, h4 = AE.Encode(text_batch)
-        o8 = AE.Decode_Train(text_batch, c1, c2, c3, c4, h1, h2, h3, h4)
-        loss=AE.Loss(text_batch, o8)
+        o8 = AE.Decode_train(text_batch, c1, c2, c3, c4, h1, h2, h3, h4)
+        loss = AE.Loss(text_batch, o8)
+        if(label_batch==0):
+            loss_normal.append(loss)
+        elif(label_batch==1):
+            loss_abnormal.append(loss)
         print(loss)
+        print(label_batch)
+
+
 
 
 if __name__ == '__main__':
