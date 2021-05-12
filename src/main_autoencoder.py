@@ -82,6 +82,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
             loss_normal.append(loss)
         elif(label_batch==1):
             loss_abnormal.append(loss)
+
         print(loss)
         print(label_batch)
 
