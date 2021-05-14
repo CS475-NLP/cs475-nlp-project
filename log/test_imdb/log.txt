@@ -1,0 +1,310 @@
+2021-05-14 00:55:05,248 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 00:55:05,313 - root - INFO - Data path is ../data.
+2021-05-14 00:55:05,314 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 00:55:05,315 - root - INFO - Dataset: imdb
+2021-05-14 00:55:05,315 - root - INFO - Normal class: -1
+2021-05-14 00:55:05,316 - root - INFO - Network: cvdd_Net
+2021-05-14 00:55:05,316 - root - INFO - Tokenizer: spacy
+2021-05-14 00:55:05,317 - root - INFO - Clean text in pre-processing: True
+2021-05-14 00:55:05,318 - root - INFO - Word vector embedding size: 300
+2021-05-14 00:55:05,318 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 00:55:05,319 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 00:55:05,320 - root - INFO - Number of attention heads: 10
+2021-05-14 00:55:05,320 - root - INFO - Attention size: 150
+2021-05-14 00:55:05,321 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 00:55:05,321 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 00:55:05,328 - root - INFO - Set seed to 1.
+2021-05-14 00:55:05,453 - root - INFO - Computation device: cpu
+2021-05-14 00:55:05,454 - root - INFO - Number of dataloader workers: 0
+2021-05-14 00:55:05,468 - torchnlp.download - INFO - Downloading aclImdb_v1.tar.gz
+2021-05-14 01:41:26,026 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 01:41:26,027 - root - INFO - Data path is ../data.
+2021-05-14 01:41:26,028 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 01:41:26,028 - root - INFO - Dataset: imdb
+2021-05-14 01:41:26,029 - root - INFO - Normal class: -1
+2021-05-14 01:41:26,029 - root - INFO - Network: cvdd_Net
+2021-05-14 01:41:26,030 - root - INFO - Tokenizer: spacy
+2021-05-14 01:41:26,030 - root - INFO - Clean text in pre-processing: True
+2021-05-14 01:41:26,031 - root - INFO - Word vector embedding size: 300
+2021-05-14 01:41:26,031 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 01:41:26,032 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 01:41:26,032 - root - INFO - Number of attention heads: 10
+2021-05-14 01:41:26,032 - root - INFO - Attention size: 150
+2021-05-14 01:41:26,033 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 01:41:26,033 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 01:41:26,040 - root - INFO - Set seed to 1.
+2021-05-14 01:41:26,125 - root - INFO - Computation device: cpu
+2021-05-14 01:41:26,126 - root - INFO - Number of dataloader workers: 0
+2021-05-14 01:41:26,127 - torchnlp.download - INFO - Downloading aclImdb_v1.tar.gz
+2021-05-14 01:41:35,836 - torchnlp.download - INFO - Extracting ../data/aclImdb_v1.tar.gz
+2021-05-14 01:48:29,684 - torchnlp.download - INFO - Extracted ../data/aclImdb_v1.tar.gz
+2021-05-14 02:22:20,788 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 02:22:20,888 - root - INFO - Data path is ../data.
+2021-05-14 02:22:20,889 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 02:22:20,890 - root - INFO - Dataset: imdb
+2021-05-14 02:22:20,890 - root - INFO - Normal class: -1
+2021-05-14 02:22:20,891 - root - INFO - Network: cvdd_Net
+2021-05-14 02:22:20,891 - root - INFO - Tokenizer: spacy
+2021-05-14 02:22:20,892 - root - INFO - Clean text in pre-processing: True
+2021-05-14 02:22:20,892 - root - INFO - Word vector embedding size: 300
+2021-05-14 02:22:20,893 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 02:22:20,893 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 02:22:20,894 - root - INFO - Number of attention heads: 10
+2021-05-14 02:22:20,894 - root - INFO - Attention size: 150
+2021-05-14 02:22:20,895 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 02:22:20,895 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 02:22:20,973 - root - INFO - Set seed to 1.
+2021-05-14 02:22:21,048 - root - INFO - Computation device: cpu
+2021-05-14 02:22:21,049 - root - INFO - Number of dataloader workers: 0
+2021-05-14 18:49:14,736 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 18:49:14,779 - root - INFO - Data path is ../data.
+2021-05-14 18:49:14,780 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 18:49:14,781 - root - INFO - Dataset: imdb
+2021-05-14 18:49:14,781 - root - INFO - Normal class: -1
+2021-05-14 18:49:14,782 - root - INFO - Network: cvdd_Net
+2021-05-14 18:49:14,782 - root - INFO - Tokenizer: spacy
+2021-05-14 18:49:14,783 - root - INFO - Clean text in pre-processing: True
+2021-05-14 18:49:14,783 - root - INFO - Word vector embedding size: 300
+2021-05-14 18:49:14,784 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 18:49:14,784 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 18:49:14,785 - root - INFO - Number of attention heads: 10
+2021-05-14 18:49:14,785 - root - INFO - Attention size: 150
+2021-05-14 18:49:14,786 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 18:49:14,786 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 18:49:14,903 - root - INFO - Set seed to 1.
+2021-05-14 18:49:14,939 - root - INFO - Computation device: cpu
+2021-05-14 18:49:14,939 - root - INFO - Number of dataloader workers: 0
+2021-05-14 19:05:07,732 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 19:05:07,733 - root - INFO - Data path is ../data.
+2021-05-14 19:05:07,733 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 19:05:07,734 - root - INFO - Dataset: imdb
+2021-05-14 19:05:07,734 - root - INFO - Normal class: -1
+2021-05-14 19:05:07,735 - root - INFO - Network: cvdd_Net
+2021-05-14 19:05:07,735 - root - INFO - Tokenizer: spacy
+2021-05-14 19:05:07,735 - root - INFO - Clean text in pre-processing: True
+2021-05-14 19:05:07,736 - root - INFO - Word vector embedding size: 300
+2021-05-14 19:05:07,736 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 19:05:07,737 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 19:05:07,737 - root - INFO - Number of attention heads: 10
+2021-05-14 19:05:07,738 - root - INFO - Attention size: 150
+2021-05-14 19:05:07,738 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 19:05:07,738 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 19:05:07,744 - root - INFO - Set seed to 1.
+2021-05-14 19:05:07,761 - root - INFO - Computation device: cpu
+2021-05-14 19:05:07,762 - root - INFO - Number of dataloader workers: 0
+2021-05-14 19:06:08,214 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 19:06:08,215 - root - INFO - Data path is ../data.
+2021-05-14 19:06:08,215 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 19:06:08,216 - root - INFO - Dataset: imdb
+2021-05-14 19:06:08,216 - root - INFO - Normal class: -1
+2021-05-14 19:06:08,216 - root - INFO - Network: cvdd_Net
+2021-05-14 19:06:08,217 - root - INFO - Tokenizer: spacy
+2021-05-14 19:06:08,217 - root - INFO - Clean text in pre-processing: True
+2021-05-14 19:06:08,218 - root - INFO - Word vector embedding size: 300
+2021-05-14 19:06:08,218 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 19:06:08,219 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 19:06:08,219 - root - INFO - Number of attention heads: 10
+2021-05-14 19:06:08,219 - root - INFO - Attention size: 150
+2021-05-14 19:06:08,220 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 19:06:08,220 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 19:06:08,226 - root - INFO - Set seed to 1.
+2021-05-14 19:06:08,244 - root - INFO - Computation device: cpu
+2021-05-14 19:06:08,245 - root - INFO - Number of dataloader workers: 0
+2021-05-14 20:05:42,615 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 20:05:42,616 - root - INFO - Data path is ../data.
+2021-05-14 20:05:42,617 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 20:05:42,617 - root - INFO - Dataset: imdb
+2021-05-14 20:05:42,618 - root - INFO - Normal class: -1
+2021-05-14 20:05:42,618 - root - INFO - Network: cvdd_Net
+2021-05-14 20:05:42,619 - root - INFO - Tokenizer: spacy
+2021-05-14 20:05:42,619 - root - INFO - Clean text in pre-processing: True
+2021-05-14 20:05:42,620 - root - INFO - Word vector embedding size: 300
+2021-05-14 20:05:42,620 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 20:05:42,621 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 20:05:42,621 - root - INFO - Number of attention heads: 10
+2021-05-14 20:05:42,622 - root - INFO - Attention size: 150
+2021-05-14 20:05:42,622 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 20:05:42,623 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 20:05:42,654 - root - INFO - Set seed to 1.
+2021-05-14 20:05:42,825 - root - INFO - Computation device: cpu
+2021-05-14 20:05:42,826 - root - INFO - Number of dataloader workers: 0
+2021-05-14 20:06:27,011 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 20:06:27,012 - root - INFO - Data path is ../data.
+2021-05-14 20:06:27,013 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 20:06:27,013 - root - INFO - Dataset: imdb
+2021-05-14 20:06:27,013 - root - INFO - Normal class: -1
+2021-05-14 20:06:27,014 - root - INFO - Network: cvdd_Net
+2021-05-14 20:06:27,014 - root - INFO - Tokenizer: spacy
+2021-05-14 20:06:27,015 - root - INFO - Clean text in pre-processing: True
+2021-05-14 20:06:27,015 - root - INFO - Word vector embedding size: 300
+2021-05-14 20:06:27,016 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 20:06:27,016 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 20:06:27,016 - root - INFO - Number of attention heads: 10
+2021-05-14 20:06:27,017 - root - INFO - Attention size: 150
+2021-05-14 20:06:27,017 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 20:06:27,018 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 20:06:27,023 - root - INFO - Set seed to 1.
+2021-05-14 20:06:27,131 - root - INFO - Computation device: gpu
+2021-05-14 20:06:27,132 - root - INFO - Number of dataloader workers: 0
+2021-05-14 20:09:46,377 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 20:09:46,378 - root - INFO - Data path is ../data.
+2021-05-14 20:09:46,379 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 20:09:46,380 - root - INFO - Dataset: imdb
+2021-05-14 20:09:46,380 - root - INFO - Normal class: -1
+2021-05-14 20:09:46,381 - root - INFO - Network: cvdd_Net
+2021-05-14 20:09:46,381 - root - INFO - Tokenizer: spacy
+2021-05-14 20:09:46,382 - root - INFO - Clean text in pre-processing: True
+2021-05-14 20:09:46,382 - root - INFO - Word vector embedding size: 300
+2021-05-14 20:09:46,383 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 20:09:46,383 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 20:09:46,384 - root - INFO - Number of attention heads: 10
+2021-05-14 20:09:46,384 - root - INFO - Attention size: 150
+2021-05-14 20:09:46,385 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 20:09:46,386 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 20:09:46,392 - root - INFO - Set seed to 1.
+2021-05-14 20:09:46,519 - root - INFO - Computation device: gpu
+2021-05-14 20:09:46,521 - root - INFO - Number of dataloader workers: 0
+2021-05-14 20:17:36,613 - torchnlp.download - INFO - Downloading glove.42B.300d.zip
+2021-05-14 20:24:33,906 - torchnlp.download - INFO - Extracting ../data/word_vectors_cache/glove.42B.300d.zip
+2021-05-14 20:26:05,049 - torchnlp.download - INFO - Extracted ../data/word_vectors_cache/glove.42B.300d.zip
+2021-05-14 20:26:17,521 - torchnlp.word_to_vector.pretrained_word_vectors - INFO - Loading vectors from ../data/word_vectors_cache/glove.42B.300d.txt
+2021-05-14 20:30:21,033 - torchnlp.word_to_vector.pretrained_word_vectors - INFO - Saving vectors to ../data/word_vectors_cache/glove.42B.300d.txt.pt
+2021-05-14 20:36:05,950 - root - INFO - Log file is ../log/test_imdb/log.txt.
+2021-05-14 20:36:05,951 - root - INFO - Data path is ../data.
+2021-05-14 20:36:05,952 - root - INFO - Export path is ../log/test_imdb.
+2021-05-14 20:36:05,953 - root - INFO - Dataset: imdb
+2021-05-14 20:36:05,954 - root - INFO - Normal class: -1
+2021-05-14 20:36:05,955 - root - INFO - Network: cvdd_Net
+2021-05-14 20:36:05,956 - root - INFO - Tokenizer: spacy
+2021-05-14 20:36:05,957 - root - INFO - Clean text in pre-processing: True
+2021-05-14 20:36:05,958 - root - INFO - Word vector embedding size: 300
+2021-05-14 20:36:05,959 - root - INFO - Load pre-trained model: GloVe_42B
+2021-05-14 20:36:05,960 - root - INFO - Anomaly Score: context_dist_mean
+2021-05-14 20:36:05,960 - root - INFO - Number of attention heads: 10
+2021-05-14 20:36:05,961 - root - INFO - Attention size: 150
+2021-05-14 20:36:05,962 - root - INFO - Orthogonality regularization hyperparameter: 10.000
+2021-05-14 20:36:05,963 - root - INFO - Temperature alpha annealing strategy: soft
+2021-05-14 20:36:05,971 - root - INFO - Set seed to 1.
+2021-05-14 20:36:06,098 - root - INFO - Computation device: cuda
+2021-05-14 20:36:06,100 - root - INFO - Number of dataloader workers: 0
+2021-05-14 20:48:38,830 - torchnlp.word_to_vector.pretrained_word_vectors - INFO - Loading vectors from ../data/word_vectors_cache/glove.42B.300d.txt.pt
+2021-05-14 20:48:48,155 - root - INFO - Initialize context vectors...
+2021-05-14 20:49:10,869 - root - INFO - Context vectors initialized.
+2021-05-14 20:49:10,872 - root - INFO - Starting training...
+2021-05-14 20:49:14,226 - root - INFO - | Epoch: 001/100 | Train Time: 3.354s | Train Loss: 0.377007 |
+2021-05-14 20:49:17,185 - root - INFO - | Epoch: 002/100 | Train Time: 2.956s | Train Loss: 0.170459 |
+2021-05-14 20:49:20,027 - root - INFO - | Epoch: 003/100 | Train Time: 2.841s | Train Loss: 0.169989 |
+2021-05-14 20:49:22,912 - root - INFO - | Epoch: 004/100 | Train Time: 2.883s | Train Loss: 0.169926 |
+2021-05-14 20:49:25,720 - root - INFO - | Epoch: 005/100 | Train Time: 2.805s | Train Loss: 0.169875 |
+2021-05-14 20:49:28,552 - root - INFO - | Epoch: 006/100 | Train Time: 2.830s | Train Loss: 0.170124 |
+2021-05-14 20:49:31,505 - root - INFO - | Epoch: 007/100 | Train Time: 2.951s | Train Loss: 0.169950 |
+2021-05-14 20:49:34,264 - root - INFO - | Epoch: 008/100 | Train Time: 2.757s | Train Loss: 0.169884 |
+2021-05-14 20:49:37,064 - root - INFO - | Epoch: 009/100 | Train Time: 2.798s | Train Loss: 0.169963 |
+2021-05-14 20:49:39,836 - root - INFO - | Epoch: 010/100 | Train Time: 2.771s | Train Loss: 0.169880 |
+2021-05-14 20:49:42,593 - root - INFO - | Epoch: 011/100 | Train Time: 2.755s | Train Loss: 0.170038 |
+2021-05-14 20:49:45,351 - root - INFO - | Epoch: 012/100 | Train Time: 2.756s | Train Loss: 0.169887 |
+2021-05-14 20:49:48,092 - root - INFO - | Epoch: 013/100 | Train Time: 2.739s | Train Loss: 0.169881 |
+2021-05-14 20:49:50,883 - root - INFO - | Epoch: 014/100 | Train Time: 2.789s | Train Loss: 0.169990 |
+2021-05-14 20:49:53,649 - root - INFO - | Epoch: 015/100 | Train Time: 2.764s | Train Loss: 0.169925 |
+2021-05-14 20:49:56,421 - root - INFO - | Epoch: 016/100 | Train Time: 2.770s | Train Loss: 0.169902 |
+2021-05-14 20:49:59,211 - root - INFO - | Epoch: 017/100 | Train Time: 2.789s | Train Loss: 0.169964 |
+2021-05-14 20:50:02,036 - root - INFO - | Epoch: 018/100 | Train Time: 2.823s | Train Loss: 0.169854 |
+2021-05-14 20:50:04,846 - root - INFO - | Epoch: 019/100 | Train Time: 2.808s | Train Loss: 0.169942 |
+2021-05-14 20:50:07,613 - root - INFO - | Epoch: 020/100 | Train Time: 2.765s | Train Loss: 0.169825 |
+2021-05-14 20:50:07,614 - root - INFO -   Temperature alpha scheduler: new alpha is 0
+2021-05-14 20:50:10,397 - root - INFO - | Epoch: 021/100 | Train Time: 2.782s | Train Loss: 0.169868 |
+2021-05-14 20:50:13,164 - root - INFO - | Epoch: 022/100 | Train Time: 2.765s | Train Loss: 0.169900 |
+2021-05-14 20:50:15,917 - root - INFO - | Epoch: 023/100 | Train Time: 2.751s | Train Loss: 0.169888 |
+2021-05-14 20:50:18,677 - root - INFO - | Epoch: 024/100 | Train Time: 2.759s | Train Loss: 0.169863 |
+2021-05-14 20:50:21,485 - root - INFO - | Epoch: 025/100 | Train Time: 2.806s | Train Loss: 0.169814 |
+2021-05-14 20:50:24,267 - root - INFO - | Epoch: 026/100 | Train Time: 2.779s | Train Loss: 0.169873 |
+2021-05-14 20:50:27,024 - root - INFO - | Epoch: 027/100 | Train Time: 2.756s | Train Loss: 0.169836 |
+2021-05-14 20:50:29,839 - root - INFO - | Epoch: 028/100 | Train Time: 2.812s | Train Loss: 0.169856 |
+2021-05-14 20:50:32,605 - root - INFO - | Epoch: 029/100 | Train Time: 2.764s | Train Loss: 0.169931 |
+2021-05-14 20:50:35,364 - root - INFO - | Epoch: 030/100 | Train Time: 2.757s | Train Loss: 0.169870 |
+2021-05-14 20:50:38,128 - root - INFO - | Epoch: 031/100 | Train Time: 2.762s | Train Loss: 0.169887 |
+2021-05-14 20:50:40,877 - root - INFO - | Epoch: 032/100 | Train Time: 2.747s | Train Loss: 0.169824 |
+2021-05-14 20:50:43,637 - root - INFO - | Epoch: 033/100 | Train Time: 2.759s | Train Loss: 0.169802 |
+2021-05-14 20:50:46,443 - root - INFO - | Epoch: 034/100 | Train Time: 2.804s | Train Loss: 0.169822 |
+2021-05-14 20:50:49,199 - root - INFO - | Epoch: 035/100 | Train Time: 2.754s | Train Loss: 0.169841 |
+2021-05-14 20:50:51,969 - root - INFO - | Epoch: 036/100 | Train Time: 2.768s | Train Loss: 0.169865 |
+2021-05-14 20:50:54,730 - root - INFO - | Epoch: 037/100 | Train Time: 2.759s | Train Loss: 0.169984 |
+2021-05-14 20:50:57,541 - root - INFO - | Epoch: 038/100 | Train Time: 2.809s | Train Loss: 0.169801 |
+2021-05-14 20:51:00,303 - root - INFO - | Epoch: 039/100 | Train Time: 2.759s | Train Loss: 0.169827 |
+2021-05-14 20:51:03,080 - root - INFO - | Epoch: 040/100 | Train Time: 2.775s | Train Loss: 0.168502 |
+2021-05-14 20:51:03,081 - root - INFO -   LR scheduler: new learning rate is 0.001
+2021-05-14 20:51:03,082 - root - INFO -   Temperature alpha scheduler: new alpha is 0
+2021-05-14 20:51:05,848 - root - INFO - | Epoch: 041/100 | Train Time: 2.765s | Train Loss: 0.168372 |
+2021-05-14 20:51:08,600 - root - INFO - | Epoch: 042/100 | Train Time: 2.750s | Train Loss: 0.168367 |
+2021-05-14 20:51:11,361 - root - INFO - | Epoch: 043/100 | Train Time: 2.760s | Train Loss: 0.168368 |
+2021-05-14 20:51:14,128 - root - INFO - | Epoch: 044/100 | Train Time: 2.765s | Train Loss: 0.168344 |
+2021-05-14 20:51:16,919 - root - INFO - | Epoch: 045/100 | Train Time: 2.789s | Train Loss: 0.168357 |
+2021-05-14 20:51:19,701 - root - INFO - | Epoch: 046/100 | Train Time: 2.781s | Train Loss: 0.168342 |
+2021-05-14 20:51:22,497 - root - INFO - | Epoch: 047/100 | Train Time: 2.794s | Train Loss: 0.168359 |
+2021-05-14 20:51:25,334 - root - INFO - | Epoch: 048/100 | Train Time: 2.835s | Train Loss: 0.168345 |
+2021-05-14 20:51:28,167 - root - INFO - | Epoch: 049/100 | Train Time: 2.831s | Train Loss: 0.168345 |
+2021-05-14 20:51:30,994 - root - INFO - | Epoch: 050/100 | Train Time: 2.825s | Train Loss: 0.168341 |
+2021-05-14 20:51:33,827 - root - INFO - | Epoch: 051/100 | Train Time: 2.831s | Train Loss: 0.168345 |
+2021-05-14 20:51:36,637 - root - INFO - | Epoch: 052/100 | Train Time: 2.809s | Train Loss: 0.168369 |
+2021-05-14 20:51:39,482 - root - INFO - | Epoch: 053/100 | Train Time: 2.843s | Train Loss: 0.168329 |
+2021-05-14 20:51:42,314 - root - INFO - | Epoch: 054/100 | Train Time: 2.829s | Train Loss: 0.168332 |
+2021-05-14 20:51:45,151 - root - INFO - | Epoch: 055/100 | Train Time: 2.836s | Train Loss: 0.168331 |
+2021-05-14 20:51:47,987 - root - INFO - | Epoch: 056/100 | Train Time: 2.834s | Train Loss: 0.168318 |
+2021-05-14 20:51:50,823 - root - INFO - | Epoch: 057/100 | Train Time: 2.834s | Train Loss: 0.168340 |
+2021-05-14 20:51:53,652 - root - INFO - | Epoch: 058/100 | Train Time: 2.827s | Train Loss: 0.168314 |
+2021-05-14 20:51:56,475 - root - INFO - | Epoch: 059/100 | Train Time: 2.821s | Train Loss: 0.168329 |
+2021-05-14 20:51:59,293 - root - INFO - | Epoch: 060/100 | Train Time: 2.816s | Train Loss: 0.168311 |
+2021-05-14 20:51:59,294 - root - INFO -   Temperature alpha scheduler: new alpha is 0
+2021-05-14 20:52:02,171 - root - INFO - | Epoch: 061/100 | Train Time: 2.875s | Train Loss: 0.168309 |
+2021-05-14 20:52:05,460 - root - INFO - | Epoch: 062/100 | Train Time: 3.287s | Train Loss: 0.168302 |
+2021-05-14 20:52:09,047 - root - INFO - | Epoch: 063/100 | Train Time: 3.585s | Train Loss: 0.168321 |
+2021-05-14 20:52:12,018 - root - INFO - | Epoch: 064/100 | Train Time: 2.969s | Train Loss: 0.168304 |
+2021-05-14 20:52:14,998 - root - INFO - | Epoch: 065/100 | Train Time: 2.979s | Train Loss: 0.168326 |
+2021-05-14 20:52:17,977 - root - INFO - | Epoch: 066/100 | Train Time: 2.976s | Train Loss: 0.168327 |
+2021-05-14 20:52:20,948 - root - INFO - | Epoch: 067/100 | Train Time: 2.969s | Train Loss: 0.168294 |
+2021-05-14 20:52:23,933 - root - INFO - | Epoch: 068/100 | Train Time: 2.983s | Train Loss: 0.168293 |
+2021-05-14 20:52:26,914 - root - INFO - | Epoch: 069/100 | Train Time: 2.979s | Train Loss: 0.168317 |
+2021-05-14 20:52:29,882 - root - INFO - | Epoch: 070/100 | Train Time: 2.966s | Train Loss: 0.168325 |
+2021-05-14 20:52:32,890 - root - INFO - | Epoch: 071/100 | Train Time: 3.006s | Train Loss: 0.168297 |
+2021-05-14 20:52:35,922 - root - INFO - | Epoch: 072/100 | Train Time: 3.030s | Train Loss: 0.168295 |
+2021-05-14 20:52:38,916 - root - INFO - | Epoch: 073/100 | Train Time: 2.992s | Train Loss: 0.168315 |
+2021-05-14 20:52:41,938 - root - INFO - | Epoch: 074/100 | Train Time: 3.020s | Train Loss: 0.168283 |
+2021-05-14 20:52:44,943 - root - INFO - | Epoch: 075/100 | Train Time: 3.003s | Train Loss: 0.168308 |
+2021-05-14 20:52:47,942 - root - INFO - | Epoch: 076/100 | Train Time: 2.997s | Train Loss: 0.168287 |
+2021-05-14 20:52:51,072 - root - INFO - | Epoch: 077/100 | Train Time: 3.128s | Train Loss: 0.168291 |
+2021-05-14 20:52:54,328 - root - INFO - | Epoch: 078/100 | Train Time: 3.254s | Train Loss: 0.168293 |
+2021-05-14 20:52:57,595 - root - INFO - | Epoch: 079/100 | Train Time: 3.265s | Train Loss: 0.168276 |
+2021-05-14 20:53:00,832 - root - INFO - | Epoch: 080/100 | Train Time: 3.235s | Train Loss: 0.168321 |
+2021-05-14 20:53:00,834 - root - INFO -   Temperature alpha scheduler: new alpha is 0
+2021-05-14 20:53:04,013 - root - INFO - | Epoch: 081/100 | Train Time: 3.178s | Train Loss: 0.168278 |
+2021-05-14 20:53:06,858 - root - INFO - | Epoch: 082/100 | Train Time: 2.843s | Train Loss: 0.168272 |
+2021-05-14 20:53:09,711 - root - INFO - | Epoch: 083/100 | Train Time: 2.851s | Train Loss: 0.168282 |
+2021-05-14 20:53:12,542 - root - INFO - | Epoch: 084/100 | Train Time: 2.829s | Train Loss: 0.168286 |
+2021-05-14 20:53:15,387 - root - INFO - | Epoch: 085/100 | Train Time: 2.844s | Train Loss: 0.168279 |
+2021-05-14 20:53:18,254 - root - INFO - | Epoch: 086/100 | Train Time: 2.865s | Train Loss: 0.168280 |
+2021-05-14 20:53:21,118 - root - INFO - | Epoch: 087/100 | Train Time: 2.862s | Train Loss: 0.168295 |
+2021-05-14 20:53:23,969 - root - INFO - | Epoch: 088/100 | Train Time: 2.849s | Train Loss: 0.168255 |
+2021-05-14 20:53:26,846 - root - INFO - | Epoch: 089/100 | Train Time: 2.875s | Train Loss: 0.168284 |
+2021-05-14 20:53:29,690 - root - INFO - | Epoch: 090/100 | Train Time: 2.843s | Train Loss: 0.168272 |
+2021-05-14 20:53:32,550 - root - INFO - | Epoch: 091/100 | Train Time: 2.858s | Train Loss: 0.168273 |
+2021-05-14 20:53:35,396 - root - INFO - | Epoch: 092/100 | Train Time: 2.845s | Train Loss: 0.168280 |
+2021-05-14 20:53:38,249 - root - INFO - | Epoch: 093/100 | Train Time: 2.851s | Train Loss: 0.168273 |
+2021-05-14 20:53:41,109 - root - INFO - | Epoch: 094/100 | Train Time: 2.857s | Train Loss: 0.168250 |
+2021-05-14 20:53:43,964 - root - INFO - | Epoch: 095/100 | Train Time: 2.853s | Train Loss: 0.168278 |
+2021-05-14 20:53:46,821 - root - INFO - | Epoch: 096/100 | Train Time: 2.856s | Train Loss: 0.168263 |
+2021-05-14 20:53:49,684 - root - INFO - | Epoch: 097/100 | Train Time: 2.861s | Train Loss: 0.168285 |
+2021-05-14 20:53:52,517 - root - INFO - | Epoch: 098/100 | Train Time: 2.831s | Train Loss: 0.168244 |
+2021-05-14 20:53:55,355 - root - INFO - | Epoch: 099/100 | Train Time: 2.836s | Train Loss: 0.168260 |
+2021-05-14 20:53:58,194 - root - INFO - | Epoch: 100/100 | Train Time: 2.837s | Train Loss: 0.168264 |
+2021-05-14 20:53:58,196 - root - INFO - Get top words per context...
+2021-05-14 20:54:00,675 - root - INFO - Top words extracted.
+2021-05-14 20:54:00,676 - root - INFO - Training Time: 287.323s
+2021-05-14 20:54:00,677 - root - INFO - Finished training.
+2021-05-14 20:54:00,678 - root - INFO - Starting testing...
+2021-05-14 20:54:02,715 - root - INFO - Get top words per context...
+2021-05-14 20:54:05,245 - root - INFO - Top words extracted.
+2021-05-14 20:54:05,247 - root - INFO - Test Loss: 0.169768
+2021-05-14 20:54:05,247 - root - INFO - Test AUC: 0.00%
+2021-05-14 20:54:05,248 - root - INFO - Test Best Context: None
+2021-05-14 20:54:05,248 - root - INFO - Test Time: 2.024s
+2021-05-14 20:54:05,249 - root - INFO - Finished testing.
