@@ -1,0 +1,22 @@
+#!/bin/bash
+for x in 0 1 2 3 4 5
+do
+	python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_3/$x/h_1/logarithmic ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 3 --attention_size 150 --lambda_p 1.0 --alpha_scheduler logarithmic --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+	python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_3/$x/h_1/soft ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 3 --attention_size 150 --lambda_p 1.0 --alpha_scheduler soft --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+	python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_3/$x/h_10/logarithmic ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 3 --attention_size 150 --lambda_p 10.0 --alpha_scheduler logarithmic --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_3/$x/h_10/soft ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 3 --attention_size 150 --lambda_p 10.0 --alpha_scheduler soft --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+done
+for x in 0 1 2 3 4 5
+do
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_5/$x/h_1/logarithmic ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 5 --attention_size 150 --lambda_p 1.0 --alpha_scheduler logarithmic --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_5/$x/h_1/soft ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 5 --attention_size 150 --lambda_p 1.0 --alpha_scheduler soft --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_5/$x/h_10/logarithmic ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 5 --attention_size 150 --lambda_p 10.0 --alpha_scheduler logarithmic --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_5/$x/h_10/soft ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 5 --attention_size 150 --lambda_p 10.0 --alpha_scheduler soft --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+done
+for x in 0 1 2 3 4 5
+do
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_10/$x/h_1/logarithmic ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 10 --attention_size 150 --lambda_p 1.0 --alpha_scheduler logarithmic --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_10/$x/h_1/soft ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 10 --attention_size 150 --lambda_p 1.0 --alpha_scheduler soft --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_10/$x/h_10/logarithmic ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 10 --attention_size 150 --lambda_p 10.0 --alpha_scheduler logarithmic --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+        python main.py newsgroups20 cvdd_Net ../log/test_newsgroups20/head_10/$x/h_10/soft ../data --device cpu --seed 1 --clean_txt --embedding_size 300 --pretrained_model GloVe_6B --ad_score context_dist_mean --n_attention_heads 10 --attention_size 150 --lambda_p 10.0 --alpha_scheduler soft --n_epochs 100 --lr 0.01 --lr_milestone 40 --normal_class $x;
+done

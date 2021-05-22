@@ -1,5 +1,6 @@
-from torchnlp.word_to_vector import GloVe
 import os
+
+from torchnlp.word_to_vector import GloVe
 
 from torchnlp.word_to_vector.pretrained_word_vectors import _PretrainedWordVectors
 
@@ -54,7 +55,8 @@ class FastText(_PretrainedWordVectors):
         super(FastText, self).__init__(name, url=url, **kwargs)
 
 
-def load_word_vectors(word_vectors_name, embedding_size, word_vectors_cache='../data/word_vectors_cache'):
+
+def load_word_vectors(word_vectors_name, embedding_size, word_vectors_cache='../data/dd'):
 
     implemented_vector_embeddings = ('GloVe_6B', 'GloVe_42B', 'GloVe_840B', 'GloVe_twitter.27B', 'FastText_en')
     assert word_vectors_name in implemented_vector_embeddings
@@ -80,7 +82,7 @@ def load_word_vectors(word_vectors_name, embedding_size, word_vectors_cache='../
     if word_vectors_name == 'FastText_en':
         embedding_size = 300
         word_vectors = FastText(language='en', cache=word_vectors_cache)
-
+        # print("qqqqqqqqqq\n\n")
     return word_vectors, embedding_size
 
 # vectors = FastText()  # doctest: +SKIP

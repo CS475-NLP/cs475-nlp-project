@@ -44,7 +44,6 @@ def main(dataset_name, xp_path, data_path, load_config, load_model, seed, kernel
          n_jobs_dataloader, normal_class):
     """
     One-Class SVM for anomaly detection.
-
     :arg DATASET_NAME: Name of the dataset to load.
     :arg XP_PATH: Export path for logging the experiment.
     :arg DATA_PATH: Root path of data.
