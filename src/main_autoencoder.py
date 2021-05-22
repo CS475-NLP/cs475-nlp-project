@@ -10,9 +10,12 @@ from utils.misc import print_text_samples, print_top_words, get_correlation_matr
 from cvdd import CVDD
 from datasets.main import load_dataset
 
+from sklearn.metrics import roc_auc_score
+
 from networks.main import build_network
 from autoencoder.model import autoencoder
 import torch.optim as optim
+
 
 ################################################################################
 # Settings
@@ -34,8 +37,12 @@ import torch.optim as optim
               help='Load pre-trained word vectors or language models to initialize the word embeddings.')
 @click.option('--attention_size', type=int, default=100, help='Self-attention module dimensionality.')
 @click.option('--n_attention_heads', type=int, default=1, help='Number of attention heads in self-attention module.')
+@click.option('--lr', type=float, default=0.001, help='Initial learning rate for training. Default=0.001')
+@click.option('--n_epochs', type=int, default=100, help='Number of epochs to train.')
+# @click.option('--batch_size', type=int, default=64, help='Batch size for mini-batch training.')
+# @click.option('--n_jobs_dataloader', type=int, default=0, help='Number of workers for data loading. 0 means that the data will be loaded in the main process.')
 
-def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, normal_class, embedding_size, pretrained_model, attention_size, n_attention_heads):
+def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, normal_class, embedding_size, pretrained_model, attention_size, n_attention_heads, lr, n_epochs):
     # Load data
     cfg = Config(locals().copy())
 
@@ -43,22 +50,22 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     dataset = load_dataset(dataset_name, data_path, normal_class, cfg.settings['tokenizer'],
                            clean_txt=cfg.settings['clean_txt'])
 
-    print('Dataset')
-    print(dataset.train_set.dataset)
-    print(dataset.test_set.dataset)
-    print('Dataset')
+    # print('Dataset')
+    # print(dataset.train_set.dataset)
+    # print(dataset.test_set.dataset)
+    # print('Dataset')
 
     ##Word Embedding##
     embedding = build_network(net_name, dataset, embedding_size=embedding_size, pretrained_model=pretrained_model, update_embedding=False, attention_size=attention_size, n_attention_heads=n_attention_heads)
-    print(embedding)
+    # print(embedding)
 
     AE=autoencoder(embedding)
-    train_loader, test_loader = dataset.loaders(batch_size=32, num_workers=0)
+    train_loader, _ = dataset.loaders(batch_size=8, num_workers=0)
     # print(len(train_loader))
     # print(len(test_loader))
 
-    optimizer = optim.Adam(AE.parameters(), lr=0.02)
-    for i in range(100):
+    optimizer = optim.Adam(AE.parameters(), lr=cfg.settings['lr'])
+    for _ in range(cfg.settings['n_epochs']):
         AE.train()
         for data in train_loader:
             optimizer.zero_grad()
@@ -71,22 +78,35 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
             loss.backward()
             optimizer.step()
 
-    train_loader, test_loader = dataset.loaders(batch_size=1, num_workers=0)
+    _, test_loader = dataset.loaders(batch_size=1, num_workers=0)
 
-    for data in test_loader:
-        idx, text_batch, label_batch, _ = data
-        c1, c2, c3, c4, h1, h2, h3, h4 = AE.Encode(text_batch)
-        o8 = AE.Decode_train(text_batch, c1, c2, c3, c4, h1, h2, h3, h4)
-        loss = AE.Loss(text_batch, o8)
-        if(label_batch==0):
-            loss_normal.append(loss)
-        elif(label_batch==1):
-            loss_abnormal.append(loss)
-        print(loss)
-        print(label_batch)
+    zipped_result = []
+    loss_normal = []
+    loss_abnormal = []
 
+    with torch.no_grad():
+        for data in test_loader:
+            idx, text_batch, label_batch, _ = data
+            c1, c2, c3, c4, h1, h2, h3, h4 = AE.Encode(text_batch)
+            o8 = AE.Decode_train(text_batch, c1, c2, c3, c4, h1, h2, h3, h4)
+            loss = AE.Loss(text_batch, o8)
+            if(label_batch==0):
+                loss_normal.append(loss)
+            elif(label_batch==1):
+                loss_abnormal.append(loss)
+            print("loss",loss, loss.cpu().data.numpy().tolist())
+            print("label_batch",label_batch, label_batch.cpu().data.numpy().tolist())
 
+            zipped_result += list(zip(idx, label_batch.cpu().data.numpy().tolist(), [loss.cpu().data.numpy().tolist()]))
+            # auc_value = roc_auc_score(label_batch, loss)
+        
+    _, labels, scores = zip(*zipped_result)
+    labels = np.array(labels)
+    scores = np.array(scores)
+    auc_value = roc_auc_score(labels, scores)
+    print('Test AUC: {:.2f}%'.format(100. * auc_value))
+    
 
-
+# main()
 if __name__ == '__main__':
     main()
