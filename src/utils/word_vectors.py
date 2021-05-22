@@ -84,3 +84,6 @@ def load_word_vectors(word_vectors_name, embedding_size, word_vectors_cache='../
         word_vectors = FastText(language='en', cache=word_vectors_cache)
         # print("qqqqqqqqqq\n\n")
     return word_vectors, embedding_size
+
+# vectors = FastText()  # doctest: +SKIP
+# print(vectors['hello'])  # doctest: +SKIP
