@@ -60,16 +60,3 @@ class autoencoder(BaseNet):
 
         return MSE_Loss
 
-    # def Decode(self, x, c1, c2, c3, c4, h1, h2, h3, h4):
-    #     hidden = self.pretrained_model(x)
-    #     o5, (c5, h5) = self.lstm5(hidden, (c1, h1))
-    #     o6, (c6, h6) = self.lstm6(o5, (c2, h2))
-    #     o7, (c7, h7) = self.lstm7(o6, (c3, h3))
-    #     o8, (c8, h8) = self.lstm8(o7, (c4, h4))
-    #
-    # def Decode_test(self, c1, c2, c3, c4, h1, h2, h3, h4 ):
-    #
-
-
-
-
