@@ -39,12 +39,36 @@ import torch.optim as optim
 @click.option('--n_attention_heads', type=int, default=1, help='Number of attention heads in self-attention module.')
 @click.option('--lr', type=float, default=0.001, help='Initial learning rate for training. Default=0.001')
 @click.option('--n_epochs', type=int, default=100, help='Number of epochs to train.')
-# @click.option('--batch_size', type=int, default=64, help='Batch size for mini-batch training.')
+@click.option('--batch_size', type=int, default=64, help='Batch size for mini-batch training.')
 # @click.option('--n_jobs_dataloader', type=int, default=0, help='Number of workers for data loading. 0 means that the data will be loaded in the main process.')
+@click.option('--device', type=str, default='cuda', help='Computation device to use ("cpu", "cuda", "cuda:2", etc.).')
+@click.option('--seed', type=int, default=-1, help='Set seed. If -1, use randomization.')
+@click.option('--n_jobs_dataloader', type=int, default=0,
+              help='Number of workers for data loading. 0 means that the data will be loaded in the main process.')
+@click.option('--n_threads', type=int, default=0,
+              help='Sets the number of OpenMP threads used for parallelizing CPU operations')
 
-def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, normal_class, embedding_size, pretrained_model, attention_size, n_attention_heads, lr, n_epochs):
+def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, normal_class, embedding_size, pretrained_model, attention_size, n_attention_heads, lr, n_epochs, batch_size,seed,device, n_jobs_dataloader, n_threads):
     # Load data
     cfg = Config(locals().copy())
+
+    # Set seed for reproducibility
+    if cfg.settings['seed'] != -1:
+        random.seed(cfg.settings['seed'])
+        np.random.seed(cfg.settings['seed'])
+        torch.manual_seed(cfg.settings['seed'])
+        torch.cuda.manual_seed(cfg.settings['seed'])
+        torch.backends.cudnn.deterministic = True
+        # logger.info('Set seed to %d.' % cfg.settings['seed'])
+
+    # Default device to 'cpu' if cuda is not available
+    if not torch.cuda.is_available():
+        device = 'cpu'
+    # logger.info('Computation device: %s' % device)
+    # logger.info('Number of dataloader workers: %d' % n_jobs_dataloader)
+    if n_threads > 0:
+        torch.set_num_threads(n_threads)
+        # logger.info('Number of threads used for parallelizing CPU operations: %d' % n_threads)
 
     ##Data Load##
     dataset = load_dataset(dataset_name, data_path, normal_class, cfg.settings['tokenizer'],
@@ -60,7 +84,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     # print(embedding)
 
     AE=autoencoder(embedding)
-    train_loader, _ = dataset.loaders(batch_size=8, num_workers=0)
+    train_loader, _ = dataset.loaders(batch_size=cfg.settings['batch_size'], num_workers=0)
     # print(len(train_loader))
     # print(len(test_loader))
 
@@ -74,7 +98,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
             c1, c2, c3, c4, h1, h2, h3, h4 = AE.Encode(text_batch)
             o8 = AE.Decode_train(text_batch, c1, c2, c3, c4, h1, h2, h3, h4)
             loss=AE.Loss(text_batch, o8)
-            print(loss)
+            # print(loss)
             loss.backward()
             optimizer.step()
 
@@ -84,25 +108,35 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     loss_normal = []
     loss_abnormal = []
 
+    # i = 0
+
     with torch.no_grad():
         for data in test_loader:
             idx, text_batch, label_batch, _ = data
             c1, c2, c3, c4, h1, h2, h3, h4 = AE.Encode(text_batch)
             o8 = AE.Decode_train(text_batch, c1, c2, c3, c4, h1, h2, h3, h4)
             loss = AE.Loss(text_batch, o8)
-            if(label_batch==0):
-                loss_normal.append(loss)
-            elif(label_batch==1):
-                loss_abnormal.append(loss)
-            print("loss",loss, loss.cpu().data.numpy().tolist())
-            print("label_batch",label_batch, label_batch.cpu().data.numpy().tolist())
+            # print("zzzz", label_batch)
+            # print("zz222", text_batch)
+            # print("loooos", loss)
+            # if(label_batch[i]==0):
+            #     loss_normal.append(loss)
+            # elif(label_batch[i]==1):
+            #     loss_abnormal.append(loss)
+            # print("loss",loss, loss.cpu().data.numpy().tolist())
+            # print("label_batch",label_batch, label_batch.cpu().data.numpy().tolist())
 
             zipped_result += list(zip(idx, label_batch.cpu().data.numpy().tolist(), [loss.cpu().data.numpy().tolist()]))
             # auc_value = roc_auc_score(label_batch, loss)
-        
+            # i += 1
+
     _, labels, scores = zip(*zipped_result)
     labels = np.array(labels)
     scores = np.array(scores)
+    # print(labels)
+    # print(scores)
+    # print(labels.size(), scores.size())
+
     auc_value = roc_auc_score(labels, scores)
     print('Test AUC: {:.2f}%'.format(100. * auc_value))
     
