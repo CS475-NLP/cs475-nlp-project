@@ -57,6 +57,8 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     # print(len(train_loader))
     # print(len(test_loader))
 
+
+
     optimizer = optim.Adam(AE.parameters(), lr=0.02)
     for i in range(100):
         AE.train()
@@ -69,10 +71,15 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
             M_recon = AE.forward(M)
             loss=AE.Loss(M, M_recon)
             print(loss)
+
             loss.backward()
             optimizer.step()
 
     train_loader, test_loader = dataset.loaders(batch_size=1, num_workers=0)
+
+    zipped_result = []
+    loss_normal = []
+    loss_abnormal = []
 
     for data in test_loader:
         idx, text_batch, label_batch, _ = data
@@ -81,7 +88,13 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
         loss = AE.Loss(M, M_recon)
 
         print(loss)
+        zipped_result += list(zip(idx, label_batch.cpu().data.numpy().tolist(), [loss.cpu().data.numpy().tolist()]))
         print(label_batch)
+    _, labels, scores = zip(*zipped_result)
+    labels = np.array(labels)
+    scores = np.array(scores)
+
+    print('Test AUC: {:.2f}%'.format(100. * auc_value))
 
 if __name__ == '__main__':
     main()
