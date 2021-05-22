@@ -29,9 +29,9 @@ class autoencoder_attention(BaseNet):
         # x.shape = (sentence_length, batch_size)
         hidden = self.pretrained_model(x) # hidden.shape = (sentence_length, batch_size, hidden_size)
         M, A = self.self_attention(hidden)
-        print(hidden.shape)
-        print(A.shape)
-        print(M.shape)
+        # print(hidden.shape)
+        # print(A.shape)
+        # print(M.shape)
 
         return M
 

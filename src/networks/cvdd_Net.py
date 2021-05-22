@@ -8,8 +8,8 @@ from networks.self_attention import SelfAttention
 
 class CVDDNet(BaseNet):
 
-        def __init__(self, pretrained_model, attention_size=100, n_attention_heads=3):
-            super().__init__()
+    def __init__(self, pretrained_model, attention_size=100, n_attention_heads=3):
+        super().__init__()
 
         # Load pretrained model (which provides a hidden representation per word, e.g. word vector or language model)
         self.pretrained_model = pretrained_model
