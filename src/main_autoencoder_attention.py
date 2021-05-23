@@ -13,6 +13,7 @@ from datasets.main import load_dataset
 from networks.main import build_network
 from autoencoder.model_attention import autoencoder_attention
 import torch.optim as optim
+from sklearn.metrics import roc_auc_score
 
 ################################################################################
 # Settings
@@ -43,10 +44,10 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     dataset = load_dataset(dataset_name, data_path, normal_class, cfg.settings['tokenizer'],
                            clean_txt=cfg.settings['clean_txt'])
 
-    print('Dataset')
-    print(dataset.train_set.dataset)
-    print(dataset.test_set.dataset)
-    print('Dataset')
+    # print('Dataset')
+    # print(dataset.train_set.dataset)
+    # print(dataset.test_set.dataset)
+    # print('Dataset')
 
     ##Word Embedding##
     embedding = build_network(net_name, dataset, embedding_size=embedding_size, pretrained_model=pretrained_model, update_embedding=False, attention_size=attention_size, n_attention_heads=n_attention_heads)
@@ -94,6 +95,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     labels = np.array(labels)
     scores = np.array(scores)
 
+    auc_value = roc_auc_score(labels, scores)
     print('Test AUC: {:.2f}%'.format(100. * auc_value))
 
 if __name__ == '__main__':
