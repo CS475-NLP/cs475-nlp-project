@@ -14,6 +14,7 @@ from sklearn.metrics import roc_auc_score
 from networks.main import build_network
 from autoencoder.model_attention import autoencoder_attention
 import torch.optim as optim
+from sklearn.metrics import roc_auc_score
 
 ################################################################################
 # Settings

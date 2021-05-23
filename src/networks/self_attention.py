@@ -19,9 +19,12 @@ class SelfAttention(nn.Module):
         # hidden.shape = (sentence_length, batch_size, hidden_size)
 
         # Change to hidden.shape = (batch_size, sentence_length, hidden_size)
+        print(hidden.shape)
         hidden = hidden.transpose(0, 1)
+        print(hidden.shape)
 
         x = torch.tanh(self.W1(hidden))
+        print(x.shape)
         # x.shape = (batch_size, sentence_length, attention_size)
 
         x = F.softmax(self.W2(x), dim=1)  # softmax over sentence_length

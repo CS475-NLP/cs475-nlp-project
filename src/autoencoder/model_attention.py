@@ -27,7 +27,10 @@ class autoencoder_attention(BaseNet):
 
     def sentence_Embedding(self, x):
         # x.shape = (sentence_length, batch_size)
-        hidden = self.pretrained_model(x) # hidden.shape = (sentence_length, batch_size, hidden_size)
+        hidden = self.pretrained_model(x)  # hidden.shape = (sentence_length, batch_size, hidden_size)
+        if hidden.dim()==2:
+            hidden=torch.unsqueeze(hidden, 0)
+
         M, A = self.self_attention(hidden)
         # print(hidden.shape)
         # print(A.shape)
@@ -37,15 +40,15 @@ class autoencoder_attention(BaseNet):
 
     def forward(self, M):
 
-        o1=self.fc1(M)
-        o2=self.fc2(o1)
-        o3=self.fc3(o2)
-        o4=self.fc4(o3)
+        o1 = self.fc1(M)
+        o2 = self.fc2(o1)
+        o3 = self.fc3(o2)
+        o4 = self.fc4(o3)
 
         return o4
 
-    def Loss(self, M, o4):
+    def Loss(self, M, o6):
         loss = nn.MSELoss()
-        MSE_Loss = loss(M, o4)
+        MSE_Loss = loss(M, o6)
 
         return MSE_Loss
