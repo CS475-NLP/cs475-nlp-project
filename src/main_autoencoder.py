@@ -89,6 +89,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     # print(len(test_loader))
 
     optimizer = optim.Adam(AE.parameters(), lr=cfg.settings['lr'])
+    AE.eval()
     for _ in range(cfg.settings['n_epochs']):
         AE.train()
         for data in train_loader:
@@ -109,6 +110,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     loss_abnormal = []
 
     # i = 0
+
 
     with torch.no_grad():
         for data in test_loader:

@@ -25,6 +25,8 @@ class autoencoder_attention(BaseNet):
         self.fc3 = nn.Linear(50, 150)
         self.fc4 = nn.Linear(150, 300)
 
+        self.dropout = nn.Dropout(0.3)
+
     def sentence_Embedding(self, x):
         # x.shape = (sentence_length, batch_size)
         hidden = self.pretrained_model(x)  # hidden.shape = (sentence_length, batch_size, hidden_size)
@@ -41,9 +43,14 @@ class autoencoder_attention(BaseNet):
     def forward(self, M):
 
         o1 = self.fc1(M)
+        o1=self.dropout(o1)
         o2 = self.fc2(o1)
+        o2 = self.dropout(o2)
         o3 = self.fc3(o2)
+        o3 = self.dropout(o3)
         o4 = self.fc4(o3)
+        # o5 = self.fc5(o4)
+        # o6 = self.fc6(o5)
 
         return o4
 

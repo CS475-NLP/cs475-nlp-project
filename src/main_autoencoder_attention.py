@@ -90,7 +90,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
 
 
 
-    optimizer = optim.Adam(AE.parameters(), lr=0.02)
+    optimizer = optim.Adam(AE.parameters(), lr=0.02, weight_decay=1e-6)
     for i in range(cfg.settings['n_epochs']):
         AE.train()
         for data in train_loader:
@@ -112,6 +112,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     loss_normal = []
     loss_abnormal = []
 
+    AE.eval()
     for data in test_loader:
         idx, text_batch, label_batch, _ = data
         M = AE.sentence_Embedding(text_batch)
