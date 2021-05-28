@@ -15,9 +15,9 @@ def build_network(net_name, dataset, embedding_size=None, pretrained_model=None,
     net = None
     vocab_size = dataset.encoder.vocab_size
 
-    print('vocab_size')
-    print(vocab_size)
-    print('vocab_size')
+    # print('vocab_size')
+    # print(vocab_size)
+    # print('vocab_size')
 
     # Set embedding
 

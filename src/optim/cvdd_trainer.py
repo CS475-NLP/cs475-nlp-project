@@ -67,6 +67,7 @@ class CVDDTrainer(BaseTrainer):
         optimizer = optim.Adam(parameters, lr=self.lr, weight_decay=self.weight_decay)
 
         # Set learning rate scheduler
+        print(self.lr_milestones)
         scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=self.lr_milestones, gamma=0.1)
 
         # Training
