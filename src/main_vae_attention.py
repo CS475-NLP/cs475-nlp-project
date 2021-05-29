@@ -12,7 +12,7 @@ from datasets.main import load_dataset
 from sklearn.metrics import roc_auc_score
 
 from networks.main import build_network
-from autoencoder.model_attention import autoencoder_attention
+from autoencoder.model_attention_variational import vae
 import torch.optim as optim
 from sklearn.metrics import roc_auc_score
 
@@ -83,35 +83,34 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     embedding = build_network(net_name, dataset, embedding_size=embedding_size, pretrained_model=pretrained_model, update_embedding=False, attention_size=attention_size, n_attention_heads=n_attention_heads)
     # print(embedding)
 
-    AE=autoencoder_attention(embedding, n_attention_heads=cfg.settings['n_attention_heads'])
+    VAE=vae(embedding, n_attention_heads=cfg.settings['n_attention_heads'])
     train_loader, test_loader = dataset.loaders(batch_size=cfg.settings['batch_size'], num_workers=0)
-    # print(len(train_loader))
-    # print(len(test_loader))
 
-
-
-#     optimizer = optim.Adam(AE.parameters(), lr=0.001, weight_decay=1e-6)
-    optimizer = optim.Adam(AE.parameters(), lr=0.01, weight_decay=1e-6)
-    # print("dfqfedqfdqw")
-    scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=(40,), gamma=0.1)
-
-
+    optimizer = optim.Adam(VAE.parameters(), lr=0.01, weight_decay=1e-6)
+    scheduler= optim.lr_scheduler.StepLR(optimizer,60)
     for i in range(cfg.settings['n_epochs']):
-        # print("zzz")
-        AE.train()
-
-        scheduler.step()
-
+        VAE.train()
         for data in train_loader:
             optimizer.zero_grad()
             idx, text_batch, label_batch, _ = data
             text_batch, label_batch = text_batch.to('cpu'), label_batch.to('cpu')
 
-            M = AE.sentence_Embedding(text_batch)
-            M_recon = AE.forward(M)
-            loss=AE.Loss(M, M_recon)
-            print(loss)
+            M = VAE.sentence_Embedding(text_batch)
+            mean, log_var= VAE.Encode(M)
 
+            recon_loss=0
+            for l in range(5):
+                z= VAE.reparametrize(mean, log_var, batch=cfg.settings['batch_size'])
+                M_recon=VAE.decode(z)
+                recon_loss += VAE.Recon_Loss(M, M_recon)
+            recon_loss/=5
+
+            kl_loss = VAE.KL_divergence(mean, log_var)
+            #
+            # print(recon_loss)
+            # print(kl_loss)
+
+            loss = recon_loss + kl_loss
             loss.backward()
             optimizer.step()
 
@@ -121,18 +120,21 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
     loss_normal = []
     loss_abnormal = []
 
-    AE.eval()
+    VAE.eval()
     for data in test_loader:
         idx, text_batch, label_batch, _ = data
-        M = AE.sentence_Embedding(text_batch)
-        M_recon = AE.forward(M)
-        loss = AE.Loss(M, M_recon)
-        # print(M)
-        # print(M_recon)
-        # print(loss)
+        M = VAE.sentence_Embedding(text_batch)
+        mean, log_var = VAE.Encode(M)
+
+        recon_loss = 0
+        for l in range(5):
+            z = VAE.reparametrize(mean, log_var, batch=1)
+            M_recon = VAE.decode(z)
+            recon_loss += VAE.Recon_Loss(M, M_recon)
+        recon_loss /= 5
+
+        loss = recon_loss
         zipped_result += list(zip(idx, label_batch.cpu().data.numpy().tolist(), [loss.cpu().data.numpy().tolist()]))
-        # print(label_batch)
-        # print("\n")
     _, labels, scores = zip(*zipped_result)
     labels = np.array(labels)
     scores = np.array(scores)
