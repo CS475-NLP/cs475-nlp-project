@@ -1,7 +1,7 @@
 from .reuters21578 import Reuters_Dataset
 from .newsgroups20 import Newsgroups20_Dataset
 from .imdb import IMDB_Dataset
-
+from .pretrain_reuters21578 import Pretrain_Reuters_Dataset
 
 def load_dataset(dataset_name, data_path, normal_class, tokenizer='spacy', use_tfidf_weights=False,
                  append_sos=False, append_eos=False, clean_txt=False):
@@ -26,5 +26,10 @@ def load_dataset(dataset_name, data_path, normal_class, tokenizer='spacy', use_t
         dataset = IMDB_Dataset(root=data_path, normal_class=normal_class, tokenizer=tokenizer,
                                use_tfidf_weights=use_tfidf_weights, append_sos=append_sos, append_eos=append_eos,
                                clean_txt=clean_txt)
+
+    if dataset_name == 'reuters-pretrain':
+        dataset = Pretrain_Reuters_Dataset(root=data_path, normal_class=normal_class, tokenizer=tokenizer,
+                                  use_tfidf_weights=use_tfidf_weights, append_sos=append_sos, append_eos=append_eos,
+                                  clean_txt=clean_txt)
 
     return dataset

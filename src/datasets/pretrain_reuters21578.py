@@ -79,6 +79,9 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
 
         # Subset train_set to normal class
         self.train_set = Subset(self.train_set, train_idx_normal)
+
+        print('Size of pretrain dataset: ', len(self.train_set))
+
         # Subset test_set to selected normal and anomalous classes
         # self.test_set = Subset(self.test_set, test_idx)
 
