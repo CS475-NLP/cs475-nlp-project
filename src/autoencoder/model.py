@@ -27,7 +27,7 @@ class autoencoder(BaseNet):
         # x.shape = (sentence_length, batch_size)
 
         hidden = self.pretrained_model(x)
-        print(hidden.shape)
+        # print(hidden.shape)
         # hidden.shape = (sentence_length, batch_size, hidden_size)
 
         return hidden

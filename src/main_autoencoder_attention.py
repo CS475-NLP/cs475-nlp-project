@@ -90,9 +90,18 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
 
 
 
-    optimizer = optim.Adam(AE.parameters(), lr=0.001, weight_decay=1e-6)
+#     optimizer = optim.Adam(AE.parameters(), lr=0.001, weight_decay=1e-6)
+    optimizer = optim.Adam(AE.parameters(), lr=0.01, weight_decay=1e-6)
+    # print("dfqfedqfdqw")
+    scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=(40,), gamma=0.1)
+
+
     for i in range(cfg.settings['n_epochs']):
+        # print("zzz")
         AE.train()
+
+        scheduler.step()
+
         for data in train_loader:
             optimizer.zero_grad()
             idx, text_batch, label_batch, _ = data
