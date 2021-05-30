@@ -47,7 +47,7 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
         self.outlier_classes = classes
 
         # Load the reuters dataset (Test는 필요없음)
-        self.train_set = reuters_dataset(directory=root, train=True, test=True, clean_txt=clean_txt)
+        self.train_set, self.test_set = reuters_dataset(directory=root, train=True, test=True, clean_txt=clean_txt)
 
         # Pre-process
         self.train_set.columns.add('index')
