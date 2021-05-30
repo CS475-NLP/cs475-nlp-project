@@ -7,7 +7,7 @@ def load_dataset(dataset_name, data_path, normal_class, tokenizer='spacy', use_t
                  append_sos=False, append_eos=False, clean_txt=False):
     """Loads the dataset."""
 
-    implemented_datasets = ('reuters', 'newsgroups20', 'imdb')
+    implemented_datasets = ('reuters', 'newsgroups20', 'imdb', 'reuters-pretrain')
     assert dataset_name in implemented_datasets
 
     dataset = None
