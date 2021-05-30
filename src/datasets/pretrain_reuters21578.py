@@ -65,7 +65,7 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
                 row['label'] = torch.tensor(1) # abnormal
             row['text'] = row['text'].lower()
 
-        # test_idx = []  # for subsetting test_set to selected normal and anomalous classes
+        test_idx = []  # for subsetting test_set to selected normal and anomalous classes
         # for i, row in enumerate(self.test_set):
         #     if any(label in self.normal_classes for label in row['label']) and (len(row['label']) == 1):
         #         test_idx.append(i)
@@ -84,7 +84,7 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
 
         # Subset test_set to selected normal and anomalous classes
         # self.test_set = Subset(self.test_set, test_idx)
-        self.test_set = Subset()
+        self.test_set = Subset(Dataset([]), test_idx)
 
         # Make corpus and set encoder
         text_corpus = [row['text'] for row in datasets_iterator(self.train_set, self.test_set)]
