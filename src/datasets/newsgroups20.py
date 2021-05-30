@@ -17,7 +17,7 @@ import nltk
 class Newsgroups20_Dataset(TorchnlpDataset):
 
     def __init__(self, root: str, normal_class=0, tokenizer='spacy', use_tfidf_weights=False, append_sos=False,
-                 append_eos=False, clean_txt=False):
+                 append_eos=False, clean_txt=False, load_encoder=None):
         super().__init__(root)
 
         self.n_classes = 2  # 0: normal, 1: outlier
@@ -66,10 +66,15 @@ class Newsgroups20_Dataset(TorchnlpDataset):
 
         # Make corpus and set encoder
         text_corpus = [row['text'] for row in datasets_iterator(self.train_set, self.test_set)]
-        if tokenizer == 'spacy':
-            self.encoder = SpacyEncoder(text_corpus, min_occurrences=3, append_eos=append_eos)
-        if tokenizer == 'bert':
-            self.encoder = MyBertTokenizer.from_pretrained('bert-base-uncased', cache_dir=root)
+        if load_encoder:
+            # self.encoder.load_state_dict(torch.load(load_encoder))
+            self.encoder= torch.load(load_encoder)
+            # logger.info('Loading encoder from %s.' % load_encoder)
+        else:
+            if tokenizer == 'spacy':
+                self.encoder = SpacyEncoder(text_corpus, min_occurrences=3, append_eos=append_eos)
+            if tokenizer == 'bert':
+                self.encoder = MyBertTokenizer.from_pretrained('bert-base-uncased', cache_dir=root)
 
         # Encode
         for row in datasets_iterator(self.train_set, self.test_set):

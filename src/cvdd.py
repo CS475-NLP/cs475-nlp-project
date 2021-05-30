@@ -3,6 +3,7 @@ from networks.main import build_network
 from optim.cvdd_trainer import CVDDTrainer
 
 import json
+import torch
 
 
 class CVDD(object):
@@ -52,11 +53,11 @@ class CVDD(object):
     def train(self, dataset: BaseADDataset, optimizer_name: str = 'adam', lr: float = 0.001, n_epochs: int = 25,
               lr_milestones: tuple = (), batch_size: int = 64, lambda_p: float = 1.0,
               alpha_scheduler: str = 'logarithmic', weight_decay: float = 0.5e-6, device: str = 'cuda',
-              n_jobs_dataloader: int = 0):
+              n_jobs_dataloader: int = 0, load_model: str = None):
         """Trains the CVDD model on the training data."""
         self.optimizer_name = optimizer_name
         self.trainer = CVDDTrainer(optimizer_name, lr, n_epochs, lr_milestones, batch_size, lambda_p, alpha_scheduler,
-                                   weight_decay, device, n_jobs_dataloader)
+                                   weight_decay, device, n_jobs_dataloader, load_model)
         self.net = self.trainer.train(dataset, self.net)
 
         # Get results
@@ -85,13 +86,11 @@ class CVDD(object):
 
     def save_model(self, export_path):
         """Save CVDD model to export_path."""
-        # TODO: Implement save_model
-        pass
+        torch.save(self.net.state_dict(), export_path)
 
     def load_model(self, import_path, device: str = 'cuda'):
         """Load CVDD model from import_path."""
-        # TODO: Implement load_model
-        pass
+        self.net.load_state_dict(torch.load(import_path))
 
     def save_results(self, export_json):
         """Save results dict to a JSON-file."""

@@ -16,7 +16,7 @@ class CVDDTrainer(BaseTrainer):
 
     def __init__(self, optimizer_name: str = 'adam', lr: float = 0.001, n_epochs: int = 150, lr_milestones: tuple = (),
                  batch_size: int = 128, lambda_p: float = 0.0, alpha_scheduler: str = 'hard',
-                 weight_decay: float = 1e-6, device: str = 'cuda', n_jobs_dataloader: int = 0):
+                 weight_decay: float = 1e-6, device: str = 'cuda', n_jobs_dataloader: int = 0, load_model: str = None):
         super().__init__(optimizer_name, lr, n_epochs, lr_milestones, batch_size, weight_decay, device,
                          n_jobs_dataloader)
 
@@ -33,6 +33,8 @@ class CVDDTrainer(BaseTrainer):
         self.test_auc = 0.0
         self.test_scores = None
         self.test_att_weights = None
+
+        self.load_model = load_model
 
         # alpha annealing strategy
         self.alpha_milestones = np.arange(1, 6) * int(n_epochs / 5)  # 5 equidistant milestones over n_epochs
@@ -59,8 +61,9 @@ class CVDDTrainer(BaseTrainer):
         print(len(train_loader))
 
         # Initialize context vectors
-        net.c.data = torch.from_numpy(
-            initialize_context_vectors(net, train_loader, self.device)[np.newaxis, :]).to(self.device)
+        if not self.load_model:
+            net.c.data = torch.from_numpy(
+                initialize_context_vectors(net, train_loader, self.device)[np.newaxis, :]).to(self.device)
 
         # Set parameters and optimizer (Adam optimizer for now)
         parameters = filter(lambda p: p.requires_grad, net.parameters())

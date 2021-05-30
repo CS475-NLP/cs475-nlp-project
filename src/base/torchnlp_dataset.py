@@ -16,16 +16,22 @@ class TorchnlpDataset(BaseADDataset):
     def loaders(self, batch_size: int, shuffle_train=False, shuffle_test=False, num_workers: int = 0) -> (
             DataLoader, DataLoader):
 
+        print("train set", self.train_set)
         # Use BucketSampler for sampling
         train_sampler = BucketBatchSampler(self.train_set, batch_size=batch_size, drop_last=True,
                                            sort_key=lambda r: len(r['text']))
-        test_sampler = BucketBatchSampler(self.test_set, batch_size=batch_size, drop_last=True,
+        # print("train sampler", len(train_sampler))
+        if self.test_set is not None:
+            test_sampler = BucketBatchSampler(self.test_set, batch_size=batch_size, drop_last=True,
                                           sort_key=lambda r: len(r['text']))
 
         train_loader = DataLoader(dataset=self.train_set, batch_sampler=train_sampler, collate_fn=collate_fn,
                                   num_workers=num_workers)
-        test_loader = DataLoader(dataset=self.test_set, batch_sampler=test_sampler, collate_fn=collate_fn,
+        if self.test_set is not None: 
+            test_loader = DataLoader(dataset=self.test_set, batch_sampler=test_sampler, collate_fn=collate_fn,
                                  num_workers=num_workers)
+        else:
+            test_loader = None
         return train_loader, test_loader
 
 
