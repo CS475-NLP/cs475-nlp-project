@@ -51,9 +51,9 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
 
         # Pre-process
         self.train_set.columns.add('index')
-        self.test_set.columns.add('index')
+        # self.test_set.columns.add('index')
         self.train_set.columns.add('weight')
-        self.test_set.columns.add('weight')
+        # self.test_set.columns.add('weight')
 
         train_idx_normal = []  # for subsetting train_set to normal class
         for i, row in enumerate(self.train_set):
@@ -84,6 +84,7 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
 
         # Subset test_set to selected normal and anomalous classes
         # self.test_set = Subset(self.test_set, test_idx)
+        self.test_set = Subset()
 
         # Make corpus and set encoder
         text_corpus = [row['text'] for row in datasets_iterator(self.train_set, self.test_set)]
