@@ -47,13 +47,13 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
         self.outlier_classes = classes
 
         # Load the reuters dataset (Test는 필요없음)
-        self.train_set = reuters_dataset(directory=root, train=True, test=False, clean_txt=clean_txt)
+        self.train_set = reuters_dataset(directory=root, train=True, test=True, clean_txt=clean_txt)
 
         # Pre-process
         self.train_set.columns.add('index')
-        # self.test_set.columns.add('index')
+        self.test_set.columns.add('index')
         self.train_set.columns.add('weight')
-        # self.test_set.columns.add('weight')
+        self.test_set.columns.add('weight')
 
         train_idx_normal = []  # for subsetting train_set to normal class
         for i, row in enumerate(self.train_set):
@@ -66,16 +66,16 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
             row['text'] = row['text'].lower()
 
         test_idx = []  # for subsetting test_set to selected normal and anomalous classes
-        # for i, row in enumerate(self.test_set):
-        #     if any(label in self.normal_classes for label in row['label']) and (len(row['label']) == 1):
-        #         test_idx.append(i)
-        #         row['label'] = torch.tensor(0)
-        #     elif any(label in self.outlier_classes for label in row['label']) and (len(row['label']) == 1):
-        #         test_idx.append(i)
-        #         row['label'] = torch.tensor(1)
-        #     else:
-        #         row['label'] = torch.tensor(1)
-        #     row['text'] = row['text'].lower()
+        for i, row in enumerate(self.test_set):
+            if any(label in self.normal_classes for label in row['label']) and (len(row['label']) == 1):
+                test_idx.append(i)
+                row['label'] = torch.tensor(0)
+            elif any(label in self.outlier_classes for label in row['label']) and (len(row['label']) == 1):
+                test_idx.append(i)
+                row['label'] = torch.tensor(1)
+            else:
+                row['label'] = torch.tensor(1)
+            row['text'] = row['text'].lower()
 
         # Subset train_set to normal class
         self.train_set = Subset(self.train_set, train_idx_normal)
@@ -83,8 +83,7 @@ class Pretrain_Reuters_Dataset(TorchnlpDataset):
         print('Size of pretrain dataset: ', len(self.train_set))
 
         # Subset test_set to selected normal and anomalous classes
-        # self.test_set = Subset(self.test_set, test_idx)
-        self.test_set = Subset(Dataset([]), test_idx)
+        self.test_set = Subset(self.test_set, test_idx)
 
         # Make corpus and set encoder
         text_corpus = [row['text'] for row in datasets_iterator(self.train_set, self.test_set)]
