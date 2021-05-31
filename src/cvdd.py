@@ -86,11 +86,13 @@ class CVDD(object):
 
     def save_model(self, export_path):
         """Save CVDD model to export_path."""
-        torch.save(self.net.state_dict(), export_path)
+        torch.save(self.net.c, export_path)
+        # torch.save(self.net.state_dict(), export_path)
 
     def load_model(self, import_path, device: str = 'cuda'):
         """Load CVDD model from import_path."""
-        self.net.load_state_dict(torch.load(import_path))
+        # self.net.load_state_dict(torch.load(import_path))
+        self.net.c = torch.load(import_path)
 
     def save_results(self, export_json):
         """Save results dict to a JSON-file."""
