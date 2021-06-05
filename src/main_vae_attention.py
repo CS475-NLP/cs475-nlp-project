@@ -103,6 +103,7 @@ def main(net_name, dataset_name, data_path, load_config,  tokenizer, clean_txt, 
                 z= VAE.reparametrize(mean, log_var, batch=cfg.settings['batch_size'])
                 M_recon=VAE.decode(z)
                 recon_loss += VAE.Recon_Loss(M, M_recon)
+                # recon_loss += VAE.Recon_MSE_Loss(M, M_recon)
             recon_loss/=5
 
             kl_loss = VAE.KL_divergence(mean, log_var)

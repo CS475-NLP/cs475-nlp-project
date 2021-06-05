@@ -29,9 +29,11 @@ class vae(BaseNet):
         # self.en_ac2 = nn.ReLU()
 
         self.mean = nn.Linear(300, 150)
-        self.mean_ac = nn.ReLU()
+        # self.mean_ac = nn.ReLU()
+        self.mean_ac = nn.LeakyReLU()
         self.log_var = nn.Linear(300, 150)
-        self.log_var_ac = nn.ReLU()
+        # self.log_var_ac = nn.ReLU()
+        self.log_var_ac = nn.LeakyReLU()
 
         # Decoder
         # self.dec1 = nn.Linear(10, 50)
@@ -104,7 +106,7 @@ class vae(BaseNet):
         return M_recon
 
 
-    def Recon_Loss(self, M, M_recon):
+    def Recon_Loss(self, M, M_recon): ### BCE
         # loss = nn.functional.binary_cross_entropy(M, M_recon)
         term1= - torch.mul(M, torch.log(M_recon))
         term2= - torch.mul(1-M, torch.log(1-M_recon))
@@ -113,6 +115,13 @@ class vae(BaseNet):
         loss= torch.mean(bce_loss)
 
         return loss
+
+
+    def Recon_MSE_Loss(self, M, M_recon):
+        t1 = torch.nn.MSELoss()
+        t2 = t1(M, M_recon)
+        return t2
+
 
     def KL_divergence(self, mean, log_var):
         KL_divergence = -0.5 * (1 + log_var - torch.mul(mean, mean) - torch.exp(log_var))
