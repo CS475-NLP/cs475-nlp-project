@@ -228,6 +228,10 @@ def main(dataset_name, net_name, xp_path, data_path, load_config, load_model, de
 
         # Save results, model, and configuration
         cvdd.save_results(export_json=xp_path + '/results.json')
+    else:
+        train_top_words = cvdd.train_top_words
+        print_top_words(train_top_words, export_file=xp_path + '/top_words_train',
+                        title='Top words per context in train set')
     cvdd.save_model(export_path=xp_path + '/model.tar')
     cfg.save_config(export_json=xp_path + '/config.json')
 
